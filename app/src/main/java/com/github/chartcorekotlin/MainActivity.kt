@@ -17,32 +17,33 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val binding: ActivityMainBinding = DataBindingUtil.setContentView(
-            this, R.layout.activity_main)
+            this, R.layout.activity_main
+        )
 
+        val coreData = ChartData()
+            .addDataset(
+                ChartNumberDataset()
+                    .data(listOf(
+                            60.0,
+                            50.0,
+                            40.0,
+                            120.0,
+                            2.0))
+                    .label("Acquisitions by year")
+                    .borderRadius(18)
+                    .offset(10)
+            )
+            .labels(listOf(
+                "2019",
+                "2020",
+                "2021",
+                "2022",
+                "2023"
+            ))
 
         val model = ChartCoreModel()
-            .type(ChartTypes.BAR)
-            .data(
-                ChartData(
-                    listOf(
-                        "2019",
-                        "2020",
-                        "2021",
-                        "2022",
-                        "2023"
-                    ),
-                    listOf(
-                        ChartNumberDataset()
-                            .data(listOf(
-                                60.0,
-                                50.0,
-                                40.0,
-                                120.0,
-                                2.0
-                            ))
-                            .label("Acquisitions by year")
-                )
-            ))
+            .type(ChartTypes.DOUGHNUT)
+            .data(coreData)
 
 
         binding.chartCore.draw(model)
