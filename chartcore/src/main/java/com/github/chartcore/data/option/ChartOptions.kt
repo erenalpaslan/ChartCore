@@ -13,8 +13,8 @@ data class ChartOptions(
     val events: String? = null,
     val layout: String? = null,
     val locale: String? = null,
-    val responsive: String? = null,
-    val maintainAspectRatio: String? = null,
+    val responsive: Boolean = true,
+    val maintainAspectRatio: Boolean = true,
     val aspectRatio: String? = null,
     val onResize: String? = null,
     val resizeDelay: String? = null

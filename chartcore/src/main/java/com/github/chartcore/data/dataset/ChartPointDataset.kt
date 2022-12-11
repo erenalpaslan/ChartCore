@@ -9,11 +9,11 @@ import com.github.chartcore.common.Dataset
 open class ChartPointDataset(
     private var type: String? = null,
     private var label: String? = null,
-    private var data: List<Double> = emptyList(),
+    private var data: List<Point> = emptyList(),
     private var backgroundColor: String? = null,
 ): Dataset {
     fun type(type: ChartTypes) = apply { this.type = type.type }
     fun label(label: String) = apply { this.label = label }
-    fun data(data: List<Double>) = apply { this.data = data }
+    fun data(data: List<Point>) = apply { this.data = data }
     fun backgroundColor(backgroundColor: String) = apply { this.backgroundColor = backgroundColor }
 }
