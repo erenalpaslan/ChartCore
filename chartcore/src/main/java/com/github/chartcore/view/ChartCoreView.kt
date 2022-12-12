@@ -56,11 +56,9 @@ class ChartCoreView @JvmOverloads constructor(
 
     }
 
-
     private fun drawChartWithCoreModel(model: ChartCoreModel?) {
         val jsonCoreModel = Gson().toJson(model)
-        this.evaluateJavascript("draw('${jsonCoreModel}');") {returnValue ->
-
+        this.evaluateJavascript("draw('${jsonCoreModel}');") { _ ->
         }
     }
 

@@ -18,6 +18,7 @@ open class ChartNumberDataset(
     private var borderJoinStyle: String? = null,
     private var borderRadius: Int? = null,
     private var borderWidth: Int? = null,
+    private var borderSkipped: Boolean? = null,
     private var circumference: Int? = null,
     private var clip: Int? = null,
     private var hoverBackgroundColor: String? = null,
@@ -28,7 +29,11 @@ open class ChartNumberDataset(
     private var offset: Int? = null,
     private var rotation: Int? = null,
     private var spacing: Int? = null,
-    private var weight: Int? = null
+    private var weight: Int? = null,
+    private var barPercentage: Int? = null,
+    private var barThickness: Int? = null,
+    private var fill: Boolean? = null,
+    private var tension: Int? = null
 ): Dataset {
     fun type(type: ChartTypes) = apply { this.type = type.type }
     fun label(label: String) = apply { this.label = label }
@@ -50,5 +55,11 @@ open class ChartNumberDataset(
     fun rotation(rotation: Int) = apply { this.rotation = rotation }
     fun spacing(spacing: Int) = apply { this.spacing = spacing }
     fun weight(weight: Int) = apply { this.weight = weight }
+    fun borderSkipped(borderSkipped: Boolean) = apply { this.borderSkipped = borderSkipped }
+    fun barPercentage(percentage: Int?) = apply { this.barPercentage = percentage }
+    fun barThickness(thickness: Int?) = apply { this.barThickness = thickness }
+    fun fill(fill: Boolean?) = apply { this.fill = fill }
+    fun tension(tension: Int?) = apply { this.tension = tension }
+
 }
 
