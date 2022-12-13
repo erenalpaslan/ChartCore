@@ -10,6 +10,9 @@ import com.github.chartcore.data.chart.ChartCoreModel
 import com.github.chartcore.data.chart.ChartData
 import com.github.chartcore.data.dataset.ChartNumberDataset
 import com.github.chartcore.data.option.ChartOptions
+import com.github.chartcore.data.option.elements.Arc
+import com.github.chartcore.data.option.elements.Elements
+import com.github.chartcore.data.option.elements.Line
 import com.github.chartcore.data.option.plugin.BackgroundColor
 import com.github.chartcore.data.option.plugin.Legend
 import com.github.chartcore.data.option.plugin.Plugin
@@ -53,13 +56,12 @@ class MainActivity : AppCompatActivity() {
             )
 
         val model = ChartCoreModel()
-            .type(ChartTypes.DOUGHNUT)
+            .type(ChartTypes.LINE)
             .data(coreData)
             .options(
                 ChartOptions()
                     .plugin(
                         Plugin()
-                            .customCanvasBackgroundColor("lightGreen")
                             .subtitle(
                                 Title()
                                     .display(true)
