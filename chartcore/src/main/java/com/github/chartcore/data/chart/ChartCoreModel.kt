@@ -13,5 +13,5 @@ data class ChartCoreModel(
 ) {
     fun type(type: ChartTypes) = apply { this.type = type.type }
     fun data(data: ChartData) = apply { this.data = data }
-    fun options(options: ChartOptions) = apply { this.options }
+    fun options(options: ChartOptions) = apply { this.options = options }
 }
