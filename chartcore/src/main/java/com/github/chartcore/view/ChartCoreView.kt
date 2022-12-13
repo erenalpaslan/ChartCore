@@ -2,17 +2,12 @@ package com.github.chartcore.view
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.database.Observable
 import android.util.AttributeSet
 import android.webkit.WebSettings
 import android.webkit.WebView
 import android.webkit.WebViewClient
-import android.widget.Toast
-import com.github.chartcore.common.ChartTypes
 import com.github.chartcore.data.chart.ChartCoreModel
-import com.github.chartcore.data.dataset.ChartNumberDataset
 import com.google.gson.Gson
-import kotlin.properties.ObservableProperty
 
 
 /**
@@ -25,7 +20,7 @@ class ChartCoreView @JvmOverloads constructor(
 ): WebView(context, attrs, defStyleAttrs) {
 
     private var coreModel: ChartCoreModel? = null
-    private var pageFisnished: Boolean = false
+    private var pageFinished: Boolean = false
     init {
         initView()
     }
@@ -42,7 +37,7 @@ class ChartCoreView @JvmOverloads constructor(
         this.loadUrl("file:///android_asset/chart.html")
         this.webViewClient = object : WebViewClient() {
             override fun onPageFinished(view: WebView, url: String) {
-                pageFisnished = true
+                pageFinished = true
                 coreModel?.let { draw(it) }
             }
         }
@@ -50,7 +45,7 @@ class ChartCoreView @JvmOverloads constructor(
 
     fun draw(model: ChartCoreModel) {
         this.coreModel = model
-        if (pageFisnished) {
+        if (pageFinished) {
             drawChartWithCoreModel(this.coreModel)
         }
 
