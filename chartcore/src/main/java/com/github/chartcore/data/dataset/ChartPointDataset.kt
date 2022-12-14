@@ -4,6 +4,7 @@ import com.github.chartcore.common.BorderAlign
 import com.github.chartcore.common.BorderJoinStyle
 import com.github.chartcore.common.ChartTypes
 import com.github.chartcore.common.Dataset
+import com.github.chartcore.common.PointStyle
 
 /**
  * Created by erenalpaslan on 27.11.2022
@@ -33,7 +34,18 @@ open class ChartPointDataset(
     private var barPercentage: Int? = null,
     private var barThickness: Int? = null,
     private var fill: Boolean? = null,
-    private var tension: Int? = null
+    private var tension: Float? = null,
+    private var pointBackgroundColor: String? = null,
+    private var pointBorderColor: String? = null,
+    private var pointBorderWidth: Int? = null,
+    private var pointHitRadius: Int? = null,
+    private var pointHoverBackgroundColor: String? = null,
+    private var pointHoverBorderColor: String? = null,
+    private var pointHoverBorderWidth: Int? = null,
+    private var pointHoverRadius: Int? = null,
+    private var pointRadius: Int? = null,
+    private var pointRotation: Int? = null,
+    private var pointStyle: String? = null,
 ): Dataset {
     fun type(type: ChartTypes) = apply { this.type = type.type }
     fun label(label: String) = apply { this.label = label }
@@ -56,8 +68,19 @@ open class ChartPointDataset(
     fun spacing(spacing: Int) = apply { this.spacing = spacing }
     fun weight(weight: Int) = apply { this.weight = weight }
     fun borderSkipped(borderSkipped: Boolean) = apply { this.borderSkipped = borderSkipped }
-    fun barPercentage(percentage: Int?) = apply { this.barPercentage = percentage }
-    fun barThickness(thickness: Int?) = apply { this.barThickness = thickness }
-    fun fill(fill: Boolean?) = apply { this.fill = fill }
-    fun tension(tension: Int?) = apply { this.tension = tension }
+    fun barPercentage(percentage: Int) = apply { this.barPercentage = percentage }
+    fun barThickness(thickness: Int) = apply { this.barThickness = thickness }
+    fun fill(fill: Boolean) = apply { this.fill = fill }
+    fun tension(tension: Float) = apply { this.tension = tension }
+    fun pointBackgroundColor(color: String) = apply { this.pointBackgroundColor = color }
+    fun pointBorderColor(color: String) = apply { this.pointBorderColor = color }
+    fun pointBorderWidth(width: Int) = apply { this.pointBorderWidth = width }
+    fun pointHitRadius(radius: Int) = apply { this.pointHitRadius = radius }
+    fun pointHoverBackgroundColor(color: String) = apply { this.pointHoverBackgroundColor = color }
+    fun pointHoverBorderColor(color: String) = apply { this.pointHoverBorderColor = color }
+    fun pointHoverBorderWidth(width: Int) = apply { this.pointHoverBorderWidth = width }
+    fun pointHoverRadius(radius: Int) = apply { this.pointHoverRadius = radius }
+    fun pointRadius(radius: Int) = apply { this.pointRadius = radius }
+    fun pointRotation(rotation: Int) = apply { this.pointRotation = rotation }
+    fun pointStyle(style: PointStyle) = apply { this.pointStyle = style.style }
 }

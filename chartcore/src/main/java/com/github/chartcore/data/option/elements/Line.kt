@@ -8,7 +8,7 @@ import com.github.chartcore.common.LineCap
  * Created by erenalpaslan on 13.12.2022
  */
 data class Line(
-    private var tension: Int? = null,
+    private var tension: Float? = null,
     private var backgroundColor: String? = null,
     private var borderWidth: Int? = null,
     private var borderColor: String? = null,
@@ -19,7 +19,7 @@ data class Line(
     private var fill: Boolean? = null,
     private var stepped: Boolean? = null
 ) {
-    fun tension(tension: Int) = apply { this.tension = tension }
+    fun tension(tension: Float) = apply { this.tension = tension }
     fun backgroundColor(color: String) = apply { this.backgroundColor = color }
     fun borderWidth(width: Int) = apply { this.borderWidth = width }
     fun borderColor(color: String) = apply { this.borderColor = color }

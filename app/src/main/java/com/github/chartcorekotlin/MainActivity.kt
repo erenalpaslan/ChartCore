@@ -80,6 +80,10 @@ class MainActivity : AppCompatActivity() {
                                 Tooltip(false)
                             )
                     )
+                    .elements(Elements()
+                        .line(Line()
+                            .tension(0.5f))
+                    )
             )
 
 
