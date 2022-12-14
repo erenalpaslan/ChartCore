@@ -6,6 +6,7 @@ import android.util.AttributeSet
 import android.webkit.WebSettings
 import android.webkit.WebView
 import android.webkit.WebViewClient
+import com.github.chartcore.common.ChartCoreCommon
 import com.github.chartcore.data.chart.ChartCoreModel
 import com.google.gson.Gson
 
@@ -34,7 +35,7 @@ class ChartCoreView @JvmOverloads constructor(
         this.settings.builtInZoomControls = true
         this.settings.layoutAlgorithm = WebSettings.LayoutAlgorithm.TEXT_AUTOSIZING
         this.settings.allowUniversalAccessFromFileURLs = true
-        this.loadUrl("file:///android_asset/chart.html")
+        this.loadUrl(ChartCoreCommon.CHART_FILE)
         this.webViewClient = object : WebViewClient() {
             override fun onPageFinished(view: WebView, url: String) {
                 pageFinished = true

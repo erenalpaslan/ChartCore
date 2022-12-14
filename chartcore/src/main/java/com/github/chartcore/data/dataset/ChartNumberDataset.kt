@@ -2,6 +2,7 @@ package com.github.chartcore.data.dataset
 
 import com.github.chartcore.common.BorderAlign
 import com.github.chartcore.common.BorderJoinStyle
+import com.github.chartcore.common.ChartCoreCommon
 import com.github.chartcore.common.ChartTypes
 import com.github.chartcore.common.Dataset
 import com.github.chartcore.common.PointStyle
@@ -45,7 +46,7 @@ open class ChartNumberDataset(
     private var pointHoverRadius: Int? = null,
     private var pointRadius: Int? = null,
     private var pointRotation: Int? = null,
-    private var pointStyle: String? = null,
+    private var pointStyle: String? = null
 ): Dataset {
     fun type(type: ChartTypes) = apply { this.type = type.type }
     fun label(label: String) = apply { this.label = label }
