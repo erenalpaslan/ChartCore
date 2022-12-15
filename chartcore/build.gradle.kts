@@ -1,8 +1,9 @@
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
-    id("maven-publish")
 }
+
+apply(plugin = "maven-publish")
 
 android {
     namespace = "com.github.ChartCore"
