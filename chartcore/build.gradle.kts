@@ -53,9 +53,6 @@ afterEvaluate {
                 version = "1.0.0"
 
                 artifact(tasks.getByName("sourcesJar"))
-                artifact("$buildDir/outputs/aar/${artifactId}-release.aar") {
-                    builtBy(tasks.getByName("assemble"))
-                }
 
                 pom {
                     packaging = "aar"
