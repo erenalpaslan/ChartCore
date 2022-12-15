@@ -42,7 +42,7 @@ dependencies {
 
 afterEvaluate {
     configure<PublishingExtension> {
-        val artifact = "ChartCore"
+        val artifact = "chartcore"
         val publishedGroupId = "com.github.charts"
         val libraryName = "ChartCore-Kotlin"
 
