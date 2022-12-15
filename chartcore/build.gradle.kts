@@ -42,8 +42,8 @@ dependencies {
 
 afterEvaluate {
     configure<PublishingExtension> {
-        val artifact = "charts"
-        val publishedGroupId = "com.github.chartcore"
+        val artifact = "ChartCore"
+        val publishedGroupId = "com.github.charts"
         val libraryName = "ChartCore-Kotlin"
 
         publications {
@@ -57,24 +57,7 @@ afterEvaluate {
                 pom {
                     packaging = "aar"
                     name.set(libraryName)
-                    licenses {
-                        license {
-                            name.set("The Apache Software License, Version 2.0")
-                            url.set("http://www.apache.org/licenses/LICENSE-2.0.txt")
-                        }
-                    }
-                    withXml {
-                        val dependenciesNode = asNode().appendNode("dependencies")
-                        // note: replace with the desired configuration (ex: api, testImplementation, etc...)
-                        configurations.getByName("implementation") {
-                            dependencies.forEach {
-                                val dependencyNode = dependenciesNode.appendNode("dependency")
-                                dependencyNode.appendNode("groupId", it.group)
-                                dependencyNode.appendNode("artifactId", it.name)
-                                dependencyNode.appendNode("version", it.version)
-                            }
-                        }
-                    }
+                    description.set("ChartCore-Kotlin library")
                 }
             }
         }
