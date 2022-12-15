@@ -3,6 +3,7 @@ package com.github.chartcore.data.option
 import com.github.chartcore.common.Events
 import com.github.chartcore.data.option.elements.Elements
 import com.github.chartcore.data.option.plugin.Plugin
+import com.github.chartcore.data.option.scale.Scales
 
 /**
  * Created by erenalpaslan on 27.11.2022
@@ -20,7 +21,8 @@ data class ChartOptions(
     private var maintainAspectRatio: Boolean = true,
     //val aspectRatio: String? = null,
     //val onResize: String? = null,
-    private var resizeDelay: Int? = null
+    private var resizeDelay: Int? = null,
+    private var scales: Scales? = null
 ) {
     fun plugin(plugin: Plugin) = apply { this.plugins = plugin }
     fun elements(elements: Elements) = apply { this.elements = elements }
@@ -28,4 +30,5 @@ data class ChartOptions(
     fun responsive(responsive: Boolean) = apply { this.responsive = responsive }
     fun maintainAspectRatio(maintainAspectRatio: Boolean) = apply { this.maintainAspectRatio = maintainAspectRatio }
     fun resizeDelay(delay: Int?) = apply { this.resizeDelay = delay }
+    fun scales(scales: Scales) = apply { this.scales = scales }
 }

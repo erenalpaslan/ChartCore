@@ -12,7 +12,7 @@ data class Axis(
     private var min: Double? = null,
     private var max: Double? = null,
     private var reverse: Boolean? = null,
-    private var ticks: String? = null, //Object
+    private var ticks: Tick? = null,
 ) {
     fun alignToPixels(align: Boolean) = apply { this.alignToPixels = align }
     fun backgroundColor(color: String) = apply { this.backgroundColor = color }
@@ -20,4 +20,7 @@ data class Axis(
     fun min(min: Double) = apply { this.min = min }
     fun max(max: Double) = apply { this.max = max }
     fun reverse(reverse: Boolean) = apply { this.reverse = reverse }
+    fun border(border: Border) = apply { this.border = border }
+    fun grid(grid: Grid) = apply { this.grid = grid }
+    fun ticks(tick: Tick) = apply { this.ticks = tick }
 }

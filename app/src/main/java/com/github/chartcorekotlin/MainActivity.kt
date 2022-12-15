@@ -29,65 +29,58 @@ class MainActivity : AppCompatActivity() {
             this, R.layout.activity_main
         )
 
+        val data = mapOf(
+            "2019" to 60.0,
+            "2020" to 50.0,
+            "2021" to 40.0,
+            "2022" to 120.0,
+            "2023" to 10.0
+        )
+
         val coreData = ChartData()
             .addDataset(
                 ChartNumberDataset()
-                    .data(
-                        listOf(
-                            60.0,
-                            50.0,
-                            40.0,
-                            120.0,
-                            2.0
-                        )
-                    )
+                    .data(data.values.toList())
                     .label("Acquisitions by year")
-                    .borderRadius(18)
                     .offset(10)
             )
-            .labels(
-                listOf(
-                    "2019",
-                    "2020",
-                    "2021",
-                    "2022",
-                    "2023"
-                )
+            .labels(data.keys.toList())
+
+        val chartOptions = ChartOptions()
+            .plugin(
+                Plugin()
+                    .subtitle(
+                        Title()
+                            .display(true)
+                            .text("Subtitle example")
+                            .position(Position.BOTTOM)
+                    ).title(
+                        Title()
+                            .display(true)
+                            .text("Title")
+                            .position(Position.TOP)
+                            .align(TextAlign.CENTER)
+                            .color("red")
+                    )
+                    .tooltip(
+                        Tooltip(false)
+                    )
+            )
+            .elements(
+                Elements()
+                    .line(
+                        Line()
+                            .tension(0.5f)
+                    )
             )
 
-        val model = ChartCoreModel()
+        val chartModel = ChartCoreModel()
             .type(ChartTypes.LINE)
             .data(coreData)
-            .options(
-                ChartOptions()
-                    .plugin(
-                        Plugin()
-                            .subtitle(
-                                Title()
-                                    .display(true)
-                                    .text("Subtitle example")
-                                    .position(Position.BOTTOM)
-                            )
-                            .title(
-                                Title()
-                                    .display(true)
-                                    .text("Title")
-                                    .position(Position.TOP)
-                                    .align(TextAlign.CENTER)
-                                    .color("red")
-                            )
-                            .tooltip(
-                                Tooltip(false)
-                            )
-                    )
-                    .elements(Elements()
-                        .line(Line()
-                            .tension(0.5f))
-                    )
-            )
+            .options(chartOptions)
 
 
-        binding.chartCore.draw(model)
+        binding.chartCore.draw(chartModel)
 
     }
 }
