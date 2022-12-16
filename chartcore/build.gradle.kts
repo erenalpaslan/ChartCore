@@ -85,9 +85,6 @@ afterEvaluate {
         }
     }
 }
-tasks.withType<PublishToMavenRepository> {
-    dependsOn("assemble")
-}
 
 val sourcesJar by tasks.registering(Jar::class) {
     archiveClassifier.set("sources")
