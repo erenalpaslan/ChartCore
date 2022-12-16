@@ -52,8 +52,6 @@ afterEvaluate {
                 artifactId = artifact
                 version = "1.0.0"
 
-                artifact(tasks.getByName("sourcesJar"))
-
                 pom {
                     packaging = "aar"
                     name.set(libraryName)
