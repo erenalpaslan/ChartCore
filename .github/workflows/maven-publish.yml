@@ -30,8 +30,11 @@ jobs:
       - name: Grant Permission for Gradlew to Execute
         run: chmod +x gradlew
 
+      - name: Build AAR ⚙️🛠
+        run: ./gradlew :chartcore:assemble
+
       - name: Publish to GitHub Package Registry 🚀
-        run: ./gradlew :chartcore:build :chartcore:publish
+        run: ./gradlew :chartcore:publish
         env:
           GPR_USER: ${{ github.actor }}
           GPR_KEY: ${{ secrets.GITHUB_TOKEN }}
