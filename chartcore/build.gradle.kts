@@ -52,6 +52,9 @@ afterEvaluate {
                 artifactId = artifact
                 version = "1.0.0"
 
+                artifact("$buildDir/outputs/aar/chartcore-release.aar")
+                artifact(tasks.getByName("sourcesJar"))
+
                 pom {
                     packaging = "aar"
                     name.set(libraryName)
@@ -85,6 +88,6 @@ afterEvaluate {
 }
 
 val sourcesJar by tasks.registering(Jar::class) {
-    archiveClassifier.set("sources")
     from(android.sourceSets.getByName("main").java.srcDirs)
+    archiveClassifier.set("sources")
 }
