@@ -58,6 +58,30 @@ afterEvaluate {
                     packaging = "aar"
                     name.set(libraryName)
                     description.set("ChartCore-Kotlin library")
+                    developers {
+                        developer {
+                            id.set("ErenAlpaslan")
+                            name.set("Eren Alpaslan")
+                            email.set("erenalpaslan@gmail.com")
+                            url.set("https://github.com/ErenAlpaslan")
+                        }
+                    }
+                    scm {
+                        connection.set("scm:git:github.com/ErenAlpaslan/ChartCore.git")
+                        developerConnection.set("scm:git:ssh://github.com/ErenAlpaslan/ChartCore.git")
+                        url.set("https://github.com/skydoves/ChartCore/tree/master")
+                    }
+                    withXml {
+                        val dependenciesNode = asNode().appendNode("dependencies")
+                        configurations.getByName("implementation") {
+                            dependencies.forEach {
+                                val dependencyNode = dependenciesNode.appendNode("dependency")
+                                dependencyNode.appendNode("groupId", it.group)
+                                dependencyNode.appendNode("artifactId", it.name)
+                                dependencyNode.appendNode("version", it.version)
+                            }
+                        }
+                    }
                 }
             }
         }
