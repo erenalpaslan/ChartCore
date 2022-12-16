@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project
+    xmlns="http://maven.apache.org/POM/4.0.0"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.github.charts</groupId>
+    <artifactId>chartcore</artifactId>
+    <version>1.0.0</version>
+    <packaging>aar</packaging>
+    <name>ChartCore-Kotlin</name>
+    <description>ChartCore-Kotlin library</description>
+
+    <developers>
+        <developer>
+            <id>ErenAlpaslan</id>
+            <name>Eren Alpaslan</name>
+            <email>erenalpaslan@gmail.com</email>
+            <url>https://github.com/ErenAlpaslan</url>
+        </developer>
+    </developers>
+
+    <scm>
+        <connection>scm:git:github.com/ErenAlpaslan/ChartCore.git</connection>
+        <developerConnection>scm:git:ssh://github.com/ErenAlpaslan/ChartCore.git</developerConnection>
+        <url>https://github.com/ErenAlpaslan/ChartCore/tree/master</url>
+    </scm>
+
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>GitHub Packages</name>
+            <url>https://maven.pkg.github.com/ErenAlpaslan/ChartCore</url>
+        </repository>
+    </distributionManagement>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>2.4</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <addClasspath>true</addClasspath>
+                            <classpathPrefix>lib/</classpathPrefix>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>2.4</version>
+                <executions>
+                    <execution>
+                        <id>copy</id>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>copy-dependencies</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>
+                                ${project.build.directory}/lib
+                            </outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.9.0</version>
+        </dependency>
+        <dependency>
+            <groupId>androidx.core</groupId>
+            <artifactId>core-ktx</artifactId>
+            <version>1.8.0</version>
+        </dependency>
+    </dependencies>
+</project>
