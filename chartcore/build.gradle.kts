@@ -69,7 +69,7 @@ afterEvaluate {
                     scm {
                         connection.set("scm:git:github.com/ErenAlpaslan/ChartCore.git")
                         developerConnection.set("scm:git:ssh://github.com/ErenAlpaslan/ChartCore.git")
-                        url.set("https://github.com/skydoves/ChartCore/tree/master")
+                        url.set("https://github.com/ErenAlpaslan/ChartCore/tree/master")
                     }
                     withXml {
                         val dependenciesNode = asNode().appendNode("dependencies")
@@ -82,6 +82,10 @@ afterEvaluate {
                             }
                         }
                     }
+                    distributionManagement {
+                        downloadUrl.set("https://maven.pkg.github.com/ErenAlpaslan/ChartCore")
+                    }
+
                 }
             }
         }
