@@ -31,7 +31,7 @@ jobs:
         run: chmod +x gradlew
 
       - name: Build AAR ⚙️🛠
-        run: ./gradlew :chartcore:assemble
+        run: ./gradlew :chartcore:build
 
       - name: Publish to GitHub Package Registry 🚀
         run: ./gradlew :chartcore:publish
