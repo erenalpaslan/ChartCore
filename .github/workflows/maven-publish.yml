@@ -13,10 +13,10 @@ jobs:
     steps:
       - uses: actions/checkout@v1
 
-      - name: Set up JDK 12
+      - name: Set up JDK 8
         uses: actions/setup-java@v1
         with:
-          java-version: 12
+          java-version: 8
 
       - name: Cache Gradle and wrapper
         uses: actions/cache@v2
@@ -31,10 +31,10 @@ jobs:
         run: chmod +x gradlew
 
       - name: Build AAR ⚙️🛠
-        run: bash ./gradlew :chartcore:build
+        run: ./gradlew :chartcore:assemble
 
       - name: Publish to GitHub Package Registry 🚀
-        run: bash ./gradlew :chartcore:publish
+        run: ./gradlew :chartcore:publish --release
         env:
           GPR_USER: ${{ github.actor }}
           GPR_KEY: ${{ secrets.GITHUB_TOKEN }}
@@ -48,7 +48,6 @@ jobs:
           tag_name: ${{ github.ref }}
           release_name: ${{ github.ref }}
           draft: true
-          prerelease: false
 
       - name: Upload ChartCore Library AAR 🗳
         uses: actions/upload-release-asset@v1

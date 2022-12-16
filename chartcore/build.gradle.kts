@@ -44,6 +44,7 @@ afterEvaluate {
     configure<PublishingExtension> {
         val artifact = "chartcore"
         val publishedGroupId = "com.github.charts"
+        val libraryName = "ChartCore-Kotlin"
 
         publications {
             create<MavenPublication>("maven") {
@@ -51,7 +52,38 @@ afterEvaluate {
                 artifactId = artifact
                 version = "1.0.0"
 
+                artifact("$buildDir/outputs/aar/chartcore-release.aar")
                 artifact(tasks.getByName("sourcesJar"))
+
+                pom {
+                    packaging = "aar"
+                    name.set(libraryName)
+                    description.set("ChartCore-Kotlin library")
+                    developers {
+                        developer {
+                            id.set("ErenAlpaslan")
+                            name.set("Eren Alpaslan")
+                            email.set("erenalpaslan@gmail.com")
+                            url.set("https://github.com/ErenAlpaslan")
+                        }
+                    }
+                    scm {
+                        connection.set("scm:git:github.com/ErenAlpaslan/ChartCore.git")
+                        developerConnection.set("scm:git:ssh://github.com/ErenAlpaslan/ChartCore.git")
+                        url.set("https://github.com/ErenAlpaslan/ChartCore/tree/master")
+                    }
+                    withXml {
+                        val dependenciesNode = asNode().appendNode("dependencies")
+                        configurations.getByName("implementation") {
+                            dependencies.forEach {
+                                val dependencyNode = dependenciesNode.appendNode("dependency")
+                                dependencyNode.appendNode("groupId", it.group)
+                                dependencyNode.appendNode("artifactId", it.name)
+                                dependencyNode.appendNode("version", it.version)
+                            }
+                        }
+                    }
+                }
             }
         }
 
@@ -66,6 +98,9 @@ afterEvaluate {
             }
         }
     }
+}
+tasks.withType<PublishToMavenRepository> {
+    dependsOn("assemble")
 }
 
 val sourcesJar by tasks.registering(Jar::class) {
