@@ -32,6 +32,9 @@ jobs:
       - name: Build AAR ⚙️🛠
         run: ./gradlew :chartcore:build
 
+      - name: Build publish ⚙️🛠
+        run: ./gradlew :chartcore:publishMavenPublicationToMavenLocal
+
       - name: Create Release ✅
         id: create_release
         uses: actions/create-release@v1

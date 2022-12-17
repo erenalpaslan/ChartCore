@@ -59,8 +59,6 @@ afterEvaluate {
                 artifactId = artifact
                 version = "1.0.0"
 
-                artifact(sourcesJar)
-
                 pom {
                     packaging = "aar"
                     name.set(libraryName)
@@ -78,7 +76,7 @@ afterEvaluate {
                         developerConnection.set("scm:git:ssh://github.com/ErenAlpaslan/ChartCore.git")
                         url.set("https://github.com/ErenAlpaslan/ChartCore/tree/master")
                     }
-                    withXml {
+                    /*withXml {
                         val dependenciesNode = asNode().appendNode("dependencies")
                         configurations.getByName("implementation") {
                             dependencies.forEach {
@@ -88,7 +86,7 @@ afterEvaluate {
                                 dependencyNode.appendNode("version", it.version)
                             }
                         }
-                    }
+                    }*/
                 }
                 afterEvaluate {
                     from(components["release"])
