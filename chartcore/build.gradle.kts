@@ -59,10 +59,25 @@ afterEvaluate {
                 artifactId = artifact
                 version = "1.0.0"
 
+                artifact(sourcesJar)
+
                 pom {
                     packaging = "aar"
                     name.set(libraryName)
                     description.set("ChartCore-Kotlin library")
+                    developers {
+                        developer {
+                            id.set("ErenAlpaslan")
+                            name.set("Eren Alpaslan")
+                            email.set("erenalpaslan@gmail.com")
+                            url.set("https://github.com/ErenAlpaslan")
+                        }
+                    }
+                    scm {
+                        connection.set("scm:git:github.com/ErenAlpaslan/ChartCore.git")
+                        developerConnection.set("scm:git:ssh://github.com/ErenAlpaslan/ChartCore.git")
+                        url.set("https://github.com/ErenAlpaslan/ChartCore/tree/master")
+                    }
                     withXml {
                         val dependenciesNode = asNode().appendNode("dependencies")
                         configurations.getByName("implementation") {
@@ -85,6 +100,6 @@ afterEvaluate {
 }
 
 val sourcesJar by tasks.registering(Jar::class) {
-    from(android.sourceSets.getByName("main").java.srcDirs)
     archiveClassifier.set("sources")
+    from(android.sourceSets.getByName("main").java.srcDirs)
 }
