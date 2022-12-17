@@ -103,6 +103,8 @@ Add it in your root build.gradle at the end of repositories:
 ```
 
 4. 🚀 And thats it.
+<img width="358" alt="image" src="https://user-images.githubusercontent.com/45710175/208260307-a1958a0d-1ff9-4eb3-8643-4eafcc19dead.png">
+
 
 ## LICENSE
 
