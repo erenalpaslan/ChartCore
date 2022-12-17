@@ -8,4 +8,5 @@ object BuildPlugins {
 
 object Deps {
     const val gson = "com.google.code.gson:gson:${Versions.gson}"
+    const val core = "androidx.core:core-ktx:${Versions.core}"
 }
