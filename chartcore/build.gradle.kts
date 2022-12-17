@@ -33,6 +33,13 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+
+    publishing {
+        singleVariant("release") {
+            withSourcesJar()
+            withJavadocJar()
+        }
+    }
 }
 
 dependencies {
@@ -52,9 +59,6 @@ afterEvaluate {
                 artifactId = artifact
                 version = "1.0.0"
 
-                artifact("$buildDir/outputs/aar/chartcore-release.aar")
-                artifact(tasks.getByName("sourcesJar"))
-
                 pom {
                     packaging = "aar"
                     name.set(libraryName)
@@ -71,18 +75,11 @@ afterEvaluate {
                         }
                     }
                 }
-            }
-        }
-
-        repositories {
-            maven {
-                name = "GitHubPackages"
-                url = uri("https://maven.pkg.github.com/ErenAlpaslan/ChartCore")
-                credentials {
-                    username = System.getenv("GPR_USER")
-                    password = System.getenv("GPR_KEY")
+                afterEvaluate {
+                    from(components["release"])
                 }
             }
+
         }
     }
 }
