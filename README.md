@@ -1,3 +1,6 @@
+[![Android CI](https://github.com/ErenAlpaslan/ChartCore/actions/workflows/maven-publish.yml/badge.svg)](https://github.com/ErenAlpaslan/ChartCore/actions/workflows/maven-publish.yml)
+
+
 ## ChartCore
 Data visualization library 📊 for Android. Based on Chart.js javascript library which is currently the most popular library for web development. Extremely customizable, supports pie, doughnut, line, bar, radar, area, bubble, scatter and mixed types.
 
