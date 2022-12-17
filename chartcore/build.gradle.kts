@@ -47,6 +47,33 @@ dependencies {
     implementation(Deps.core)
 }
 
+val sourcesJar by tasks.registering(Jar::class) {
+    from(android.sourceSets["main"].java.srcDirs)
+    archiveClassifier.set("sources")
+}
+
+val javadoc by tasks.registering(Javadoc::class) {
+    configurations.implementation.get().isCanBeResolved = true
+    configurations.api.get().isCanBeResolved = true
+
+    isFailOnError = false
+    source = android.sourceSets["main"].java.getSourceFiles()
+    classpath += project.files(android.bootClasspath.joinToString(separator = File.pathSeparator))
+    classpath += configurations.api
+}
+
+// build a jar with javadoc
+val javadocJar by tasks.registering(Jar::class) {
+    dependsOn(javadoc)
+    archiveClassifier.set("javadoc")
+    from(javadoc.get().destinationDir)
+}
+
+artifacts {
+    archives(sourcesJar)
+    archives(javadocJar)
+}
+
 afterEvaluate {
     configure<PublishingExtension> {
         val artifact = "chartcore"
@@ -54,10 +81,13 @@ afterEvaluate {
         val libraryName = "ChartCore-Kotlin"
 
         publications {
-            create<MavenPublication>("maven") {
+            register<MavenPublication>("maven") {
                 groupId = publishedGroupId
                 artifactId = artifact
                 version = "1.0.0"
+
+                from(components.getByName("release"))
+                artifact(sourcesJar.get())
 
                 pom {
                     packaging = "aar"
@@ -76,7 +106,7 @@ afterEvaluate {
                         developerConnection.set("scm:git:ssh://github.com/ErenAlpaslan/ChartCore.git")
                         url.set("https://github.com/ErenAlpaslan/ChartCore/tree/master")
                     }
-                    /*withXml {
+                    withXml {
                         val dependenciesNode = asNode().appendNode("dependencies")
                         configurations.getByName("implementation") {
                             dependencies.forEach {
@@ -86,18 +116,9 @@ afterEvaluate {
                                 dependencyNode.appendNode("version", it.version)
                             }
                         }
-                    }*/
-                }
-                afterEvaluate {
-                    from(components["release"])
+                    }
                 }
             }
-
         }
     }
-}
-
-val sourcesJar by tasks.registering(Jar::class) {
-    archiveClassifier.set("sources")
-    from(android.sourceSets.getByName("main").java.srcDirs)
 }

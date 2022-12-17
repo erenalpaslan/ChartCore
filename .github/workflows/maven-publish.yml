@@ -33,7 +33,7 @@ jobs:
         run: ./gradlew :chartcore:build
 
       - name: Build publish ⚙️🛠
-        run: ./gradlew :chartcore:publishMavenPublicationToMavenLocal
+        run: ./gradlew :chartcore:publish
 
       - name: Create Release ✅
         id: create_release
