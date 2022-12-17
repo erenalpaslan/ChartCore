@@ -21,6 +21,7 @@ class MainActivity : AppCompatActivity() {
             "2022" to 120.0,
             "2023" to 10.0
         )
+
         /*
         val coreData = ChartData()
             .addDataset(
