@@ -42,8 +42,9 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: ${{ github.ref }}
-          release_name: ${{ github.ref }}
-          draft: true
+          release_name: Release ${{ github.ref }}
+          draft: false
+          prerelease: false
 
       - name: Upload ChartCore Library AAR 🗳
         uses: actions/upload-release-asset@v1
