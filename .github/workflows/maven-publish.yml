@@ -12,11 +12,10 @@ jobs:
 
     steps:
       - uses: actions/checkout@v1
-
-      - name: Set up JDK 12
+      - name: Set up JDK 11
         uses: actions/setup-java@v1
         with:
-          java-version: 12
+          java-version: 11
 
       - name: Cache Gradle and wrapper
         uses: actions/cache@v2
@@ -31,13 +30,10 @@ jobs:
         run: chmod +x gradlew
 
       - name: Build AAR ⚙️🛠
-        run: bash ./gradlew :chartcore:assemble
+        run: ./gradlew :chartcore:build
 
-      - name: Publish to GitHub Package Registry 🚀
-        run: bash ./gradlew :chartcore:publish
-        env:
-          GPR_USER: ${{ github.actor }}
-          GPR_KEY: ${{ secrets.GITHUB_TOKEN }}
+      - name: Build publish ⚙️🛠
+        run: ./gradlew :chartcore:publish
 
       - name: Create Release ✅
         id: create_release
@@ -47,15 +43,15 @@ jobs:
         with:
           tag_name: ${{ github.ref }}
           release_name: ${{ github.ref }}
-          draft: true
+          draft: false
           prerelease: false
 
-      - name: Upload Simple Library AAR 🗳
+      - name: Upload ChartCore Library AAR 🗳
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_path: chartcore/build/outputs/aar/chartcore-release.aar
-          asset_name: chartcore-library.aar
+          asset_name: chartcore-release.aar
           asset_content_type: application/aar

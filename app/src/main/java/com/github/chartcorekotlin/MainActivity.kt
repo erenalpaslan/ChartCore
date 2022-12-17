@@ -10,11 +10,8 @@ import com.github.chartcore.data.chart.ChartCoreModel
 import com.github.chartcore.data.chart.ChartData
 import com.github.chartcore.data.dataset.ChartNumberDataset
 import com.github.chartcore.data.option.ChartOptions
-import com.github.chartcore.data.option.elements.Arc
 import com.github.chartcore.data.option.elements.Elements
 import com.github.chartcore.data.option.elements.Line
-import com.github.chartcore.data.option.plugin.BackgroundColor
-import com.github.chartcore.data.option.plugin.Legend
 import com.github.chartcore.data.option.plugin.Plugin
 import com.github.chartcore.data.option.plugin.Title
 import com.github.chartcore.data.option.plugin.Tooltip
