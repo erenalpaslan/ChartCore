@@ -111,6 +111,6 @@ Add it in your root build.gradle at the end of repositories:
 
 ## LICENSE
 
-![](https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/License_icon-mit-88x31-2.svg/128px-License_icon-mit-88x31-2.svg.png)
+<img width="100" alt="image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/ASF_Logo.svg/500px-ASF_Logo.svg.png">
 
-ChartCore is available under the MIT license. See the [LICENSE](https://github.com/ErenAlpaslan/ChartCore/blob/master/LICENSE) file for more information. 
+ChartCore is available under the Apache license. See the [LICENSE](https://github.com/ErenAlpaslan/ChartCore/blob/master/LICENSE) file for more information. 
